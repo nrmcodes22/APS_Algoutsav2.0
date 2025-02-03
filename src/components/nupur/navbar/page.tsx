@@ -1,159 +1,84 @@
 "use client";
 import React, { useState } from "react";
 import "flowbite";
-import Link from "next/link";
+//import Link from "next/link";
 import Image from "next/image";
 import { Sling as Hamburger } from "hamburger-react";
-import { motion } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <nav className="fixed w-full bg-gray-700 z-50 mt-5 rounded-full border-gray-200 dark:border-gray-600">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <Image
-            src="/images/logo.png"
-            width={50}
-            height={50}
-            alt="Flowbite Logo"
-            className="mx-2 md:mx-10"
-          />
-
-          {/* Desktop Navigation Options */}
-          <div className="hidden md:flex space-x-6">
+      <div className="flex flex-col items-center justify-center h-full w-full">
+        <nav className="fixed top-0 left-1/2 -translate-x-1/2 w-[90%] z-50 mt-5 rounded-full bg-gradient-to-r from-indigo-800 via-black to-purple-700 shadow-lg border-2 border-indigo-600 transition-all duration-300">
+          <div className="max-w-screen-xl flex items-center justify-between mx-auto p-2 h-12">
             
-              <a 
-              href="#about" className="text-white hover:text-blue-500">About AU</a>
-            
-            <a
-              href="#stats"
-              className="text-white hover:text-blue-500"
-            >
-              Stats 2024
-            </a>
-            <a
-              href="#sponsers"
-              className="text-white hover:text-blue-500"
-            >
-              Sponsors
-            </a>
-            <a
-              href="#timeline"
-              className="text-white hover:text-blue-500"
-            >
-              Timeline
-            </a>
-            <a
-              href="#gallery"
-              className="text-white hover:text-blue-500"
-            >
-              Gallery
-            </a>
-            <a
-              href="#faq"
-              className="text-white hover:text-blue-500"
-            >
-              FAQs
-            </a>
-          </div>
-          
-          <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <Image
-            src="/images/algoutsavlogo.png"
-            width={60}
-            height={60}
-            alt="Flowbite Logo"
-            className="mx-1 md:mx-9"
-          />
+            {/* Left Logo */}
+            <div className="relative rounded-full">
+              <Image src="/images/logo.png" width={40} height={40} alt="Logo" />
+            </div>
 
-            {/* Hamburger Menu for Mobile */}
-            <div className="md:hidden">
-              <Hamburger
-                toggled={isOpen}
-                toggle={setIsOpen}
-                size={24}
-                color="#fff"
-                rounded
-              />
+            {/* Desktop Navigation */}
+            <div className="hidden min-[900px]:flex space-x-6">
+              {[
+                { name: "About AU", link: "#about" },
+                { name: "Stats 2024", link: "#stats" },
+                { name: "Sponsors", link: "#sponsors" },
+                { name: "Timeline", link: "#timeline" },
+                { name: "Gallery", link: "#gallery" },
+                { name: "FAQs", link: "#faq" }
+              ].map((item, index) => (
+                <a
+                  key={index}
+                  href={item.link}
+                  className="text-indigo-200 font-bold text-sm tracking-widest uppercase px-3 py-1 rounded-lg hover:text-indigo-300 hover:scale-110 hover:shadow-lg transition-all duration-300 ease-in-out"
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
+
+            {/* Right Image or Hamburger Menu */}
+            <div className="relative">
+              {/* Show Image on Medium+ Screens */}
+              <div className="hidden min-[900px]:block rounded-full">
+                <Image src="/images/algoutsavlogo.png" width={50} height={50} alt="Right Logo" />
+              </div>
+
+              {/* Show Hamburger on Small Screens */}
+              <div className="min-[900px]:hidden">
+                <Hamburger toggled={isOpen} toggle={setIsOpen} size={20} color="#fff" rounded />
+              </div>
             </div>
           </div>
 
-          {/* Sliding Mobile Dropdown Menu */}
+          {/* Mobile Dropdown Menu */}
           {isOpen && (
-            <motion.div
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ duration: 0.3 }}
-              className="absolute top-16 left-0 w-full bg-gray-700 md:hidden z-30"
-            >
-              <ul className="flex flex-col p-4 font-medium border border-gray-100 rounded-lg bg-gray-700">
-                <li>
-                  <Link href="#about" legacyBehavior>
+            <div className="absolute top-14 left-0 w-full bg-gradient-to-r from-blue-900 via-black to-purple-800 md:hidden z-30 shadow-2xl border border-indigo-500 transition-all duration-300 rounded-lg backdrop-blur-md">
+              <ul className="flex flex-col p-5 font-semibold text-center space-y-3">
+                {[
+                  { name: "About AU", link: "#about" },
+                  { name: "Stats 2024", link: "#stats" },
+                  { name: "Sponsors", link: "#sponsors" },
+                  { name: "Timeline", link: "#timeline" },
+                  { name: "Gallery", link: "#gallery" },
+                  { name: "FAQs", link: "#faq" }
+                ].map((item, index) => (
+                  <li key={index}>
                     <a
-                      className="block py-2 px-3 text-gray-100 rounded-sm hover:bg-gray-500 
-                      hover:text-lg
-                      md:hover:bg-transparent hover:text-gray-900 md:p-0  md:dark:hover:bg-transparent dark:border-gray-700"
-                      aria-current="page"
+                      href={item.link}
+                      className="block py-3 px-5 text-indigo-200 bg-transparent hover:bg-indigo-600 hover:text-white hover:scale-105 transition-all duration-300 ease-in-out rounded-lg shadow-md"
                     >
-                      About AU
+                      {item.name}
                     </a>
-                  </Link>
-                </li>
-                <li>
-                  <a
-                    href="#stats"
-                    className="block py-2 px-3 text-gray-100 rounded-sm hover:bg-gray-500
-                    hover:text-lg md:hover:bg-transparent hover:text-gray-900 md:p-0  md:dark:hover:bg-transparent dark:border-gray-700"
-                  >
-                    Stats 2024
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#sponsers"
-                   className="block py-2 px-3 text-gray-100 rounded-sm hover:bg-gray-500 
-                   hover:text-lg md:hover:bg-transparent hover:text-gray-900 md:p-0  md:dark:hover:bg-transparent dark:border-gray-700"
-                  >
-                    Sponsors
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#timeline"
-                   className="block py-2 px-3 text-gray-100 rounded-sm hover:bg-gray-500 
-                   hover:text-lg md:hover:bg-transparent hover:text-gray-900 md:p-0  md:dark:hover:bg-transparent dark:border-gray-700"
-                  >
-                    Timeline
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#gallery"
-                   className="block py-2 px-3 text-gray-100 rounded-sm hover:bg-gray-500 
-                   hover:text-lg
-                   md:hover:bg-transparent hover:text-gray-900 md:p-0  md:dark:hover:bg-transparent dark:border-gray-700"
-                  >
-                    Gallery
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#faq"
-                   className="block py-2 px-3 text-gray-100 rounded-sm hover:bg-gray-500 
-                   hover:text-lg md:hover:bg-transparent hover:text-gray-900 md:p-0  md:dark:hover:bg-transparent dark:border-gray-700"
-                  >
-                    FAQs
-                  </a>
-                </li>
+                  </li>
+                ))}
               </ul>
-              
-            </motion.div>
+            </div>
           )}
-        </div>
-      </nav>
+        </nav>
+      </div>
     </>
   );
 }

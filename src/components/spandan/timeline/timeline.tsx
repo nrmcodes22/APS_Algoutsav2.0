@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 const styles = {
   sectionHeadText:
-    "text-white font-black md:text-[40px] sm:text-[30px] xs:text-[20px] text-[10px]",
+    "text-white font-black md:text-5xl text-3xl font-montserrat tracking-wider",
   sectionSubText:
     "sm:text-[18px] text-[14px] text-secondary uppercase tracking-wider",
 };
@@ -80,7 +80,7 @@ const TimelineCard: React.FC<CheckpointProps> = ({ checkpoint }) => (
 
 const Timeline = () => {
   return (
-    <section className="py-10">
+    <section id="timeline" className="py-10">
       <motion.div className="text-center">
         <p className={styles.sectionHeadText}>Contest Timeline</p>
       </motion.div>

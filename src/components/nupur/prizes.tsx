@@ -16,7 +16,7 @@ export default function About() {
   >
     <div className="mx-auto max-w-screen-xl px-4 py-8 lg:px-6 lg:py-16">
         <div className="mx-auto mb-8 max-w-screen-md  lg:mb-12 text-center">
-            <h2 className="mb-10 text-4xl font-bold tracking-tight text-white">Takeaways</h2>
+            <h2 className="mb-10 text-white font-black md:text-5xl text-3xl font-montserrat tracking-wider">Takeaways</h2>
         </div>
         
 <div className="flex items-center justify-center">

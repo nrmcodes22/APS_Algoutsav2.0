@@ -76,7 +76,7 @@ const Gallery: React.FC = () => {
           transition={{ duration: 1, delay: 0.1, ease: 'easeOut' }}
           viewport={{ once: true }}  
         >
-      <h1 className="mb-10 text-4xl font-bold tracking-tight text-white">Gallery</h1>
+      <h1 className="mb-10 font-black md:text-5xl text-3xl font-montserrat tracking-wider text-white">Gallery</h1>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4 mx-auto" style={{ width: "80%" }}>
         {images.map((column, colIndex) => (
           <div key={colIndex} className="grid gap-4">

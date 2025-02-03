@@ -1,58 +1,64 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-//import { AnimatedTooltip } from "../ui/animated-tooltip";
+
 export default function Footer() {
-    return (
-        <>
-        
+  return (
+    <footer className="w-full mt-10 relative">
+      {/* Stylish Gradient Line on Top */}
+      <div className="h-[4px] w-[90%] mx-auto bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-full"></div>
 
-<footer className="bg-white rounded-lg shadow-sm dark:bg-gray-900 mx-2 ">
-    <div className="w-full max-w-screen-xl p-4 md:py-8">
-        <div className="sm:flex sm:items-center sm:justify-between">
-            <div className="flex items-center justify-center md:justify-start md:ml-24 mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                <Image src="/images/logo.png" width={50}
-                   height={50} alt="Flowbite Logo" className=""/>
-                     <div
-    className="inline-block h-[100px] min-h-[1em] w-0.5  bg-neutral-200 dark:bg-gray-600"></div>
-                   <Image src="/images/algoutsavlogo.png" width={60}
-                   height={60} alt="Flowbite Logo" className=""/>
-                
-            </div>
-            <ul className="flex flex-wrap items-center gap-1  justify-center md:justify-end ">
-                <li>
-                <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQGvsFXvbjcTMwAAAZQ2VrZAylI432X-Rc8T6sdGT0z3OVZnNOlOu6lxpREcdp0nNYpai9gPBU-HpMdBWt5pwc-HH7nHfxUVJkhs5mv_RZczxWMc4JwFH2pT2KC6vBnEJA5ZLCE=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Faps-nitr%2F" className="hover:underline me-4 md:me-6" target="_blank">
-                    <Image src="/images/linkedin.svg" width={30}   height={30} alt="Flowbite Logo" className=""/>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.instagram.com/aps.nitr/" className="hover:underline me-4 md:me-6" target="_blank">
-                    <Image src="/images/instagram.svg" width={30}   height={30} alt="Flowbite Logo" className=""/>
-                    </a>
-                </li>
-                <li>
-                <a href="https://www.threads.net/@aps.nitr" className="hover:underline me-4 md:me-6" target="_blank">
-                    <Image src="/images/threads.svg" width={30}   height={30} alt="Flowbite Logo" className=""/>
-                    </a>
-                </li>
-                <li>
-                <a href="https://www.youtube.com/@APSNITR" className="hover:underline me-4 md:me-6" target="_blank">
-                    <Image src="/images/yt.svg" width={30}   height={30} alt="Flowbite Logo" className=""/>
-                    </a>
-                </li>
-                <li>
-                <a href="https://x.com/ApsocietyNitr?mx=24" className="hover:underline me-4 md:me-6" target="_blank">
-                    <Image src="/images/x.svg" width={30}   height={30} alt="Flowbite Logo" className=""/>
-                    </a>
-                </li>
-                
-            </ul>
+      <div className="w-full max-w-screen-xl mx-auto p-6 md:py-8 text-center md:text-left">
+        {/* Top Section - Logos */}
+        <div className="flex flex-col md:flex-row items-center justify-between">
+          <div className="flex items-center space-x-6 mb-6 md:mb-0">
+            <Image src="/images/logo.png" width={50} height={50} alt="Logo" />
+            <div className="h-[50px] w-[2px] bg-gradient-to-b from-gray-500 to-transparent"></div>
+            <Image src="/images/algoutsavlogo.png" width={60} height={60} alt="AlgoUtsav Logo" />
+          </div>
+
+          {/* Social Icons with Glow Effect */}
+          <ul className="flex flex-wrap items-center justify-center md:justify-end gap-4">
+            {[
+              { link: "https://www.linkedin.com/company/aps-nitr/", img: "linkedin.svg" },
+              { link: "https://www.instagram.com/aps.nitr/", img: "instagram.svg" },
+              { link: "https://www.threads.net/@aps.nitr", img: "threads.svg" },
+              { link: "https://www.youtube.com/@APSNITR", img: "yt.svg" },
+              { link: "https://x.com/ApsocietyNitr?mx=24", img: "x.svg" }
+            ].map((item, index) => (
+              <li key={index}>
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-transform transform hover:scale-110 hover:shadow-lg hover:shadow-indigo-400/50"
+                >
+                  <Image src={`/images/${item.img}`} width={30} height={30} alt="Social Icon" />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
-        
-    </div>
-</footer>
 
+        {/* Middle Section - Links */}
+        {/* <ul className="flex flex-wrap justify-center mt-6 space-x-6 text-sm font-medium text-gray-500">
+          {["About Us", "Events", "Sponsors", "Gallery", "Contact"].map((item, index) => (
+            <li key={index}>
+              <a
+                href={`#${item.toLowerCase().replace(/\s+/g, "")}`}
+                className="hover:text-indigo-500 transition-all duration-300 hover:opacity-80"
+              >
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul> */}
 
-        </>
-    );
+        {/* Bottom Section - Copyright */}
+        <div className="text-center text-gray-500 mt-6 text-sm">
+          <p>© {new Date().getFullYear()} AlgoUtsav | APS NIT Rourkela. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
 }

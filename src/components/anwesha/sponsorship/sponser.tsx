@@ -5,64 +5,46 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const Sponsorship: React.FC = () => {
- 
-
-  const currentSponsors = [
+  const sponsors = [
     { src: "/images/algozenith.png", alt: "Algozenith" },
     { src: "/images/senior.jpg", alt: "Senior" },
-    { src: "/images/evo.png", alt: "Evo" },
-    { src: "/images/caneva.png", alt: "Caneva" },
-    { src: "/images/haba.png", alt: "Haba" },
-    { src: "/images/kiabi.png", alt: "Kiabi" },
-    { src: "/images/hula.png", alt: "Hula" },
-    { src: "/images/momento.png", alt: "Memento Mori" },
-    { src: "/images/bpce.png", alt: "Groupe BPCE" },
-    { src: "/images/idruide.png", alt: "Idruide" },
+    { src: "/images/fastech.png", alt: "Evo" },
   ];
 
-  const fadeInUp = {
-    initial: { opacity: 0, y: 50 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, ease: "easeOut" },
-  };
-
   return (
-    <div id="sponsers"
-      className="bg-cover bg-center py-12 px-6 "
-      style={{ backgroundImage: 'url("/backgrounds/sponsors-bg.jpg")'}}
-    >
-      
-
-      <motion.div
-        className="text-center w-[80%] mx-auto"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+    <div id="sponsers" className="w-full py-16 flex flex-col items-center justify-center">
+      {/* Section Heading */}
+      <motion.h2
+        className="text-4xl md:text-5xl font-extrabold text-white  mb-12"
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
       >
-        <h2 className="text-white text-4xl m-2 font-bold tracking-wide">
-          Sponsored By
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mt-8">
-          {currentSponsors.map((sponsor, index) => (
-            <motion.div
-              key={index}
-              initial="initial"
-              animate="animate"
-              transition={{ ...fadeInUp.transition, delay: index * 0.2 }}
-              variants={fadeInUp}
-              className="p-4 shadow-md flex items-center justify-center hover:scale-105 transition-transform duration-300"
-            >
-              <Image
-                src={sponsor.src}
-                alt={sponsor.alt}
-                width={120}
-                height={60}
-                className="object-contain rounded-lg"
-              />
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
+        Sponsored By
+      </motion.h2>
+
+      {/* Sponsors Container */}
+      <div className="flex flex-col md:flex-row items-center justify-center gap-10">
+        {sponsors.map((sponsor, index) => (
+          <motion.div
+            key={index}
+            className="p-6 rounded-2xl shadow-lg backdrop-blur-lg bg-white/10 dark:bg-black/20 border border-white/30 hover:scale-105 transition-transform duration-300 flex items-center justify-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
+            viewport={{ once: true }}
+          >
+            <Image
+              src={sponsor.src}
+              alt={sponsor.alt}
+              width={160}
+              height={80}
+              className="object-contain rounded-md"
+            />
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 };
